@@ -3,6 +3,7 @@ require "bundler/setup"
 Bundler.require(:default)
 
 require "json"
+require "ostruct"
 
 class ReadList
   attr_reader :url, :session_id
@@ -27,14 +28,38 @@ class ReadList
     remote_doc["readlist_title"]
   end
 
+  def title=(new_value)
+    response = remote_put({ "readlist_title" => new_value })
+    raise "#{response.code} is not a 204 response" unless response.code == 204
+  end
+
   def description
     remote_doc["description"]
   end
 
+  def description=(new_value)
+    response = remote_put({ "description" => new_value })
+    raise "#{response.code} is not a 204 response" unless response.code == 204
+  end
+
+  def articles
+    articles = remote_doc["entries"].map { |e|
+      OpenStruct.new(e)
+    }
+  end
+
   private
+  def remote_put(payload)
+    RestClient.put(@url, payload.to_json, :cookies => cookies_hash, :content_type => :json, :accept => :json)
+  end
+
   def remote_doc
     response = RestClient.get(@url, :content_type => :json, :accept => :json)
     raise "#{response.code} is not a 200 response" unless response.code == 200
     JSON.parse(response.body)
+  end
+
+  def cookies_hash
+    { "sessionid" => @session_id }
   end
 end
