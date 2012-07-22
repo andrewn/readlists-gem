@@ -22,4 +22,19 @@ class ReadList
     @url        = params[:url]
     @session_id = params[:session_id]
   end
+
+  def title
+    remote_doc["readlist_title"]
+  end
+
+  def description
+    remote_doc["description"]
+  end
+
+  private
+  def remote_doc
+    response = RestClient.get(@url, :content_type => :json, :accept => :json)
+    raise "#{response.code} is not a 200 response" unless response.code == 200
+    JSON.parse(response.body)
+  end
 end
