@@ -1,0 +1,20 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    addressable (2.3.1)
+    crack (0.3.1)
+    mime-types (1.19)
+    minitest (3.2.0)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    webmock (1.8.7)
+      addressable (>= 2.2.7)
+      crack (>= 0.1.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  minitest
+  rest-client
+  webmock
