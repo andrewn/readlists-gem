@@ -46,6 +46,16 @@ class TestReadList < MiniTest::Unit::TestCase
                                   :headers => {}
                                 )
 
+    @stubbed_create_entry = stub_request(:post, "http://readlists.com/api/v1/readlists/075c62a3/entries/")
+                                .with(
+                                  :body    => {"article_url" => "http://www.bbc.co.uk/news/business-18944097"},
+                                  :headers => {"Content-Type" => "application/json", "Accept" => "application/json"}
+                                )
+                                .to_return(
+                                  :status => 201,
+                                  :headers => {
+                                    "Location"   => "http://readlists.com/api/v1/readlists/075c62a3/entries/113561/",
+                                  })
 
   end
 
@@ -86,5 +96,11 @@ class TestReadList < MiniTest::Unit::TestCase
 
     assert_equal 1, readlist.articles.length
     assert_equal readlist.articles.first.entry_title, "Surface: Between a Rock and a Hardware\u00a0Place"
+  end
+
+  def test_persists_articles
+    readlist = ReadList.create
+    readlist.add_article("http://www.bbc.co.uk/news/business-18944097")
+    assert_requested @stubbed_create_entry
   end
 end

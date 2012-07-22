@@ -48,9 +48,18 @@ class ReadList
     }
   end
 
+  def add_article(article_url)
+    response = remote_post({ "article_url" => article_url}, "entries/")
+    raise "#{response.code} is not a 201 response" unless response.code == 201
+  end
+
   private
   def remote_put(payload)
     RestClient.put(@url, payload.to_json, :cookies => cookies_hash, :content_type => :json, :accept => :json)
+  end
+
+  def remote_post(payload, subresource="")
+    RestClient.post(@url + subresource, payload.to_json, :cookies => cookies_hash, :content_type => :json, :accept => :json)
   end
 
   def remote_doc
