@@ -6,6 +6,12 @@ require "json"
 require "ostruct"
 
 class ReadList
+
+  module Util
+    def extract_id_from_url(url)
+    end
+  end
+
   attr_reader :url, :session_id
 
   def self.create
@@ -51,6 +57,10 @@ class ReadList
   def add_article(article_url)
     response = remote_post({ "article_url" => article_url}, "entries/")
     raise "#{response.code} is not a 201 response" unless response.code == 201
+  end
+
+  def epub_url
+
   end
 
   private

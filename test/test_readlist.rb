@@ -103,4 +103,14 @@ class TestReadList < MiniTest::Unit::TestCase
     readlist.add_article("http://www.bbc.co.uk/news/business-18944097")
     assert_requested @stubbed_create_entry
   end
+
+  def test_extracts_id_from_url
+    assert_equal "12345", ReadList::Helper.extract_id_from_url("http://readlists.com/api/v1/readlists/12345/")
+  end
+
+  def test_exposes_epub_url
+    readlist = ReadList.new(:url => 'http://readlists.com/api/v1/readlists/12345/')
+    assert_equal "http://readlists.com/12345/download/epub", readlist.epub_url
+  end
+
 end
