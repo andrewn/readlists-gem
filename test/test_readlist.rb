@@ -104,8 +104,15 @@ class TestReadList < MiniTest::Unit::TestCase
     assert_requested @stubbed_create_entry
   end
 
+  # :todo move into own unit test
   def test_extracts_id_from_url
-    assert_equal "12345", ReadList::Helper.extract_id_from_url("http://readlists.com/api/v1/readlists/12345/")
+    util = Class.new do
+      include ReadList::Util
+    end.new
+
+    assert_equal "12345",    util.extract_id_from_url("http://readlists.com/api/v1/readlists/12345/")
+    assert_equal "075c62a3", util.extract_id_from_url("http://readlists.com/api/v1/readlists/075c62a3/")
+    assert_equal nil,        util.extract_id_from_url("http://www.bbc.co.uk/news/business-18944097")
   end
 
   def test_exposes_epub_url

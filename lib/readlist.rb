@@ -9,6 +9,11 @@ class ReadList
 
   module Util
     def extract_id_from_url(url)
+      begin
+        url.match(%r{http://readlists.com/api/v1/readlists/(.*)/})[1]
+      rescue
+        nil
+      end
     end
   end
 
@@ -24,6 +29,8 @@ class ReadList
 
     new({ :url => response.headers[:location], :session_id => session_id })
   end
+
+  include Util
 
   def initialize(params={})
     @url        = params[:url]
@@ -60,7 +67,8 @@ class ReadList
   end
 
   def epub_url
-
+    id = extract_id_from_url(@url)
+    "http://readlists.com/#{id}/download/epub"
   end
 
   private
