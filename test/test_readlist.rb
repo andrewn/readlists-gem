@@ -2,7 +2,7 @@ require 'minitest/autorun'
 require 'webmock/minitest'
 require './lib/readlist'
 
-class TestReadList < MiniTest::Unit::TestCase
+class TestReadlist < MiniTest::Unit::TestCase
   def setup
     @stubbed_create = stub_request(:post, 'http://readlists.com/api/v1/readlists/')
                                 .with(
@@ -60,24 +60,24 @@ class TestReadList < MiniTest::Unit::TestCase
   end
 
   def test_creates_anonymous_readlist
-    readlist = ReadList.create
+    readlist = Readlist.create
 
     assert_equal 'http://readlists.com/api/v1/readlists/075c62a3/', readlist.url
   end
 
   def test_stores_session_for_future_requests
-    readlist = ReadList.create
+    readlist = Readlist.create
     assert_equal "2847c36286d39d7f10f7c0a9b6a1dd48", readlist.session_id
   end
 
   def test_gets_title_and_description
-    readlist = ReadList.create
+    readlist = Readlist.create
     assert "Untitled Readlist", readlist.title
     assert "", readlist.description
   end
 
   def test_persists_title_and_description
-    readlist = ReadList.create
+    readlist = Readlist.create
     # Ensure defaults
     assert "Untitled Readlist", readlist.title
     assert "", readlist.description
@@ -92,14 +92,14 @@ class TestReadList < MiniTest::Unit::TestCase
   end
 
   def test_gets_article_list
-    readlist = ReadList.new(:url => 'http://readlists.com/api/v1/readlists/12345/')
+    readlist = Readlist.new(:url => 'http://readlists.com/api/v1/readlists/12345/')
 
     assert_equal 1, readlist.articles.length
     assert_equal readlist.articles.first.entry_title, "Surface: Between a Rock and a Hardware\u00a0Place"
   end
 
   def test_persists_articles
-    readlist = ReadList.create
+    readlist = Readlist.create
     readlist.add_article("http://www.bbc.co.uk/news/business-18944097")
     assert_requested @stubbed_create_entry
   end
@@ -107,7 +107,7 @@ class TestReadList < MiniTest::Unit::TestCase
   # :todo move into own unit test
   def test_extracts_id_from_url
     util = Class.new do
-      include ReadList::Util
+      include Readlist::Util
     end.new
 
     assert_equal "12345",    util.extract_id_from_url("http://readlists.com/api/v1/readlists/12345/")
@@ -116,7 +116,7 @@ class TestReadList < MiniTest::Unit::TestCase
   end
 
   def test_exposes_epub_url
-    readlist = ReadList.new(:url => 'http://readlists.com/api/v1/readlists/12345/')
+    readlist = Readlist.new(:url => 'http://readlists.com/api/v1/readlists/12345/')
     assert_equal "http://readlists.com/12345/download/epub", readlist.epub_url
   end
 

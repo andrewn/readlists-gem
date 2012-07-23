@@ -5,7 +5,7 @@ Bundler.require(:default)
 require "json"
 require "ostruct"
 
-class ReadList
+class Readlist
 
   module Util
     def extract_id_from_url(url)
