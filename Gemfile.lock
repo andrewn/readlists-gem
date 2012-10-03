@@ -5,8 +5,11 @@ GEM
     crack (0.3.1)
     mime-types (1.19)
     minitest (3.2.0)
+    nokogiri (1.5.5)
+    pdfkit (0.5.2)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rubyzip (0.9.9)
     webmock (1.8.7)
       addressable (>= 2.2.7)
       crack (>= 0.1.7)
@@ -16,5 +19,8 @@ PLATFORMS
 
 DEPENDENCIES
   minitest
-  rest-client
+  nokogiri (~> 1.5.5)
+  pdfkit (~> 0.5.2)
+  rest-client (~> 1.6.7)
+  rubyzip (~> 0.9.9)
   webmock

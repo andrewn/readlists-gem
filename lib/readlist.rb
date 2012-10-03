@@ -37,6 +37,10 @@ class Readlist
     @session_id = params[:session_id]
   end
 
+  def id
+    extract_id_from_url(@url)
+  end
+
   def title
     remote_doc["readlist_title"]
   end
@@ -68,10 +72,18 @@ class Readlist
 
   def epub_url
     id = extract_id_from_url(@url)
-    "http://readlists.com/#{id}/download/epub"
+    "http://readlists.com/#{id}/download/epub/"
+  end
+
+  def epub
+    remote_get(epub_url)
   end
 
   private
+  def remote_get(url)
+    RestClient.get(url)
+  end
+
   def remote_put(payload)
     RestClient.put(@url, payload.to_json, :cookies => cookies_hash, :content_type => :json, :accept => :json)
   end

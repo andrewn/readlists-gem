@@ -1,0 +1,113 @@
+Readlist add article flow
+===
+
+POST /api/v1/readlists/ HTTP/1.1
+Host: readlists.com
+Connection: keep-alive
+Content-Length: 56
+Origin: http://readlists.com
+X-Requested-With: XMLHttpRequest
+X-CSRFToken: UQEMljH0dqLbfwlKOJVQJkKztzyFxqpy
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.4 Safari/537.1
+Content-Type: application/json
+Accept: application/json, text/javascript, */*; q=0.01
+Referer: http://readlists.com/new/
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: en,cy;q=0.8,nl;q=0.6,hy;q=0.4,en-US;q=0.2
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3
+Cookie: __utma=205737104.1616553495.1339771013.1339771013.1339771013.1; __utmc=205737104; __utmz=205737104.1339771013.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); csrftoken=UQEMljH0dqLbfwlKOJVQJkKztzyFxqpy
+
+{"is_from_edit_id":false,"entries":[],"class":"sharing"}
+
+Cache-Control:no-cache
+Connection:keep-alive
+Content-Type:text/html; charset=utf-8
+Date:Sun, 24 Jun 2012 22:05:34 GMT
+Location:http://readlists.com/api/v1/readlists/075c62a3/
+Server:nginx/1.0.15
+Set-Cookie:sessionid=885b9cc5a4522e4dd05c42d12188dd52; expires=Sun, 08-Jul-2012 22:05:34 GMT; httponly; Max-Age=1209600; Path=/
+transfer-encoding:chunked
+Vary:Cookie
+
+---
+
+GET /api/v1/readlists/075c62a3/ HTTP/1.1
+Host: readlists.com
+Connection: keep-alive
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.4 Safari/537.1
+Accept: */*
+Referer: http://readlists.com/new/
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: en,cy;q=0.8,nl;q=0.6,hy;q=0.4,en-US;q=0.2
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3
+Cookie: __utma=205737104.1616553495.1339771013.1339771013.1339771013.1; __utmc=205737104; __utmz=205737104.1339771013.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); csrftoken=UQEMljH0dqLbfwlKOJVQJkKztzyFxqpy; sessionid=885b9cc5a4522e4dd05c42d12188dd52
+
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Date: Sun, 24 Jun 2012 22:05:34 GMT
+Server: nginx/1.0.15
+Vary: Accept-Encoding
+Vary: Cookie
+transfer-encoding: chunked
+Connection: keep-alive
+
+---
+
+POST /api/v1/readlists/075c62a3/entries/ HTTP/1.1
+Host: readlists.com
+Connection: keep-alive
+Content-Length: 424
+Origin: http://readlists.com
+X-Requested-With: XMLHttpRequest
+X-CSRFToken: UQEMljH0dqLbfwlKOJVQJkKztzyFxqpy
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.4 Safari/537.1
+Content-Type: application/json
+Accept: application/json, text/javascript, */*; q=0.01
+Referer: http://readlists.com/075c62a3
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: en,cy;q=0.8,nl;q=0.6,hy;q=0.4,en-US;q=0.2
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3
+Cookie: __utma=205737104.1616553495.1339771013.1339771013.1339771013.1; __utmc=205737104; __utmz=205737104.1339771013.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); csrftoken=UQEMljH0dqLbfwlKOJVQJkKztzyFxqpy; sessionid=885b9cc5a4522e4dd05c42d12188dd52
+
+{"readlist":{"is_from_edit_id":false,"entries":[null],"class":"sharing","date_added":"2012-06-24T18:05:34","date_updated":"2012-06-24T18:05:34","description":"","edit_id":"075c62a375c847b9bb6c88a300137ad4","id":"075c62a3","is_owner":false,"readlist_title":"Untitled Readlist","resource_uri":"/api/v1/readlists/075c62a3/","user":null},"article_url":"http://daringfireball.net/2012/06/surface_between_rock_and_hardware_place"}
+
+HTTP/1.1 201 CREATED
+Cache-Control: no-cache
+Content-Type: text/html; charset=utf-8
+Date: Sun, 24 Jun 2012 22:05:35 GMT
+Location: http://readlists.com/api/v1/readlists/075c62a3/entries/87310/
+Server: nginx/1.0.15
+Vary: Cookie
+transfer-encoding: chunked
+Connection: keep-alive
+
+---
+
+GET /api/v1/readlists/075c62a3/entries/87310/ HTTP/1.1
+Host: readlists.com
+Connection: keep-alive
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_3) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1180.4 Safari/537.1
+Accept: */*
+Referer: http://readlists.com/075c62a3
+Accept-Encoding: gzip,deflate,sdch
+Accept-Language: en,cy;q=0.8,nl;q=0.6,hy;q=0.4,en-US;q=0.2
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.3
+Cookie: __utma=205737104.1616553495.1339771013.1339771013.1339771013.1; __utmc=205737104; __utmz=205737104.1339771013.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); csrftoken=UQEMljH0dqLbfwlKOJVQJkKztzyFxqpy; sessionid=885b9cc5a4522e4dd05c42d12188dd52
+
+HTTP/1.1 200 OK
+Cache-Control: no-cache
+Content-Encoding: gzip
+Content-Type: application/json; charset=utf-8
+Date: Sun, 24 Jun 2012 22:05:36 GMT
+Server: nginx/1.0.15
+Vary: Accept-Encoding
+transfer-encoding: chunked
+Connection: keep-alive
+
+---
+
+http://readlists.com/075c62a3/download/epub/

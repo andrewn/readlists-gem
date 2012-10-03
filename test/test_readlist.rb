@@ -117,7 +117,7 @@ class TestReadlist < MiniTest::Unit::TestCase
 
   def test_exposes_epub_url
     readlist = Readlist.new(:url => 'http://readlists.com/api/v1/readlists/12345/')
-    assert_equal "http://readlists.com/12345/download/epub", readlist.epub_url
+    assert_equal "http://readlists.com/12345/download/epub/", readlist.epub_url
   end
 
 end
